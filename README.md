@@ -7,6 +7,7 @@
 
 ### Examples
 ____
+After installing, press ctrl+k to wake it up.
 ![image](https://github.com/xiaochuan-li/qt-keys-manager-for-windows/blob/master/screenshots/screenshot.png)
 
 
