@@ -46,11 +46,13 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowOpacity(0.8);
     setAttribute(Qt::WA_TranslucentBackground);
     setWindowFlags(Qt::FramelessWindowHint | Qt::Tool | Qt::WindowStaysOnTopHint);
+
     setFixedSize(this->width(),this->height());
     hotkey = new QHotkey (QKeySequence("Ctrl+K"), true, this);
     QObject::connect(hotkey, &QHotkey::activated, this, [&](){
         move(cursor().pos());
         showNormal();
+        activateWindow();
     });
 
     tp = new QSystemTrayIcon(this);
@@ -78,6 +80,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->listview, &QListView::clicked, this, [&](QModelIndex qModelIndex){this->clicked(qModelIndex);});
     tp->show();
+
 }
 void MainWindow::clicked(QModelIndex qModelIndex){
     QString content = this->values[qModelIndex.row()];
@@ -88,10 +91,12 @@ void MainWindow::clicked(QModelIndex qModelIndex){
         addKey();
         return ;
     }else if (content.compare("-2") == 0){
-        this->showMinimized();
+        this->hide();
+        //this->showMinimized();
         return;
     }else{
-        this->showMinimized();
+        this->hide();
+        //this->showMinimized();
         clickAt();
         QClipboard *board = QApplication::clipboard();
         board->setText(content);

@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
         return 0;
     }
     window.show();
+    window.activateWindow();
     shared.create(1);
     return app.exec();
 }
