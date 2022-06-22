@@ -6,11 +6,14 @@
 
 #include <QMessageBox>
 #include "mainwindow.h"
+#include "autorun.h"   //开机自动运行
+
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     MainWindow window;
+    autoRun();
     QObject::connect(&window, SIGNAL(pageClose()),&app,SLOT(quit()));
 
     QSharedMemory shared("apa");

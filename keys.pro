@@ -10,16 +10,24 @@ CONFIG += c++11
 # DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    autorun.cpp \
     main.cpp \
     mainwindow.cpp \
     winTools.cpp
 
 HEADERS += \
+    autorun.h \
     mainwindow.h \
     winTools.h
 
 FORMS += \
     mainwindow.ui
+
+#msvc{
+#    QMAKE_CFLAGS += /utf-8
+#    QMAKE_CXXFLAGS += /utf-8
+#    }
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
